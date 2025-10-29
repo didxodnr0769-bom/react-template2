@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { routes, notFoundRoute } from './core/route/routes'
+import Header from './components/Header'
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         {routes.map((route) => (
           <Route
