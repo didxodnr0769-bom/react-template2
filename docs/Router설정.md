@@ -17,8 +17,9 @@ npm install react-router-dom
 ```
 src/
 ├── App.jsx                 # 라우터 설정
-├── system/
-│   └── routes.js          # 라우트 관리 파일
+├── core/
+│   └── route/
+│       └── routes.js      # 라우트 관리 파일
 ├── pages/
 │   ├── Home.jsx           # 홈 페이지
 │   ├── About.jsx          # About 페이지
@@ -39,7 +40,7 @@ src/
 
 ## 라우터 설정
 
-### system/routes.js
+### core/route/routes.js
 
 중앙 집중식 라우트 관리 파일입니다. 모든 라우트를 한 곳에서 정의하고 관리합니다.
 
@@ -90,7 +91,7 @@ export const notFoundRoute = {
 
 ```jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { routes, notFoundRoute } from "./system/routes";
+import { routes, notFoundRoute } from "./core/route/routes";
 import "./App.css";
 
 function App() {
@@ -163,7 +164,7 @@ export default NewPage;
 
 ### 2단계: routes.js에 라우트 추가
 
-`src/system/routes.js` 파일의 `routes` 배열에 새 라우트를 추가합니다.
+`src/core/route/routes.js` 파일의 `routes` 배열에 새 라우트를 추가합니다.
 
 ```js
 import Home from "../pages/Home";
@@ -223,14 +224,14 @@ import { Link } from "react-router-dom";
 
 ## routes.js 유틸리티 함수
 
-`src/system/routes.js`는 라우트 관리를 위한 여러 유틸리티 함수를 제공합니다.
+`src/core/route/routes.js`는 라우트 관리를 위한 여러 유틸리티 함수를 제공합니다.
 
 ### findRouteByPath(path)
 
 경로로 라우트 설정을 찾습니다.
 
 ```js
-import { findRouteByPath } from "./system/routes";
+import { findRouteByPath } from "./core/route/routes";
 
 const route = findRouteByPath("/");
 console.log(route.name); // 'Home'
@@ -241,7 +242,7 @@ console.log(route.name); // 'Home'
 라우트 이름으로 라우트 설정을 찾습니다.
 
 ```js
-import { findRouteByName } from "./system/routes";
+import { findRouteByName } from "./core/route/routes";
 
 const route = findRouteByName("About");
 console.log(route.path); // '/about'
@@ -252,7 +253,7 @@ console.log(route.path); // '/about'
 모든 공개 라우트를 반환합니다.
 
 ```js
-import { getPublicRoutes } from "./system/routes";
+import { getPublicRoutes } from "./core/route/routes";
 
 const publicRoutes = getPublicRoutes();
 // private: false 또는 없는 모든 라우트
@@ -263,7 +264,7 @@ const publicRoutes = getPublicRoutes();
 인증이 필요한 모든 비공개 라우트를 반환합니다.
 
 ```js
-import { getPrivateRoutes } from "./system/routes";
+import { getPrivateRoutes } from "./core/route/routes";
 
 const privateRoutes = getPrivateRoutes();
 // private: true인 모든 라우트
@@ -274,7 +275,7 @@ const privateRoutes = getPrivateRoutes();
 라우트 이름으로 경로를 생성합니다. URL 파라미터가 있는 경우 치환합니다.
 
 ```js
-import { generatePath } from "./system/routes";
+import { generatePath } from "./core/route/routes";
 
 const homePath = generatePath("Home");
 console.log(homePath); // '/'
@@ -292,7 +293,7 @@ console.log(userPath); // '/user/123'
 네비게이션 메뉴를 위한 라우트 목록을 반환합니다. NotFound를 제외한 공개 라우트만 반환합니다.
 
 ```js
-import { getNavigationRoutes } from "./system/routes";
+import { getNavigationRoutes } from "./core/route/routes";
 
 const navRoutes = getNavigationRoutes();
 
@@ -319,7 +320,7 @@ function Navigation() {
 routes.js에 URL 파라미터를 포함한 라우트를 추가할 수 있습니다.
 
 ```js
-// src/system/routes.js
+// src/core/route/routes.js
 import UserDetail from "../pages/UserDetail";
 
 export const routes = [
@@ -363,7 +364,7 @@ export default UserDetail;
 <Link to="/user/123">View User 123</Link>;
 
 // 또는 generatePath 유틸리티 함수 사용
-import { generatePath } from "./system/routes";
+import { generatePath } from "./core/route/routes";
 const userPath = generatePath("UserDetail", { id: 123 });
 // userPath = '/user/123'
 ```
@@ -390,7 +391,7 @@ function MyComponent() {
 
 ```jsx
 import { useNavigate } from "react-router-dom";
-import { generatePath } from "../system/routes";
+import { generatePath } from "../core/route/routes";
 
 function MyComponent() {
   const navigate = useNavigate();

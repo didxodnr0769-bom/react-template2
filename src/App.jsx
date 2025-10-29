@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { routes, notFoundRoute } from './system/routes'
+import { routes, notFoundRoute } from './core/route/routes'
 import './App.css'
 
 function App() {
