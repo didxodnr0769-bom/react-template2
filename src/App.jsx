@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { routes, notFoundRoute } from './core/route/routes'
-import Header from './components/Header'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { routes, notFoundRoute } from "./shared/route/routes";
+import Header from "./components/Header";
+import "./App.css";
 
 function App() {
   return (
@@ -15,10 +15,13 @@ function App() {
             element={<route.component />}
           />
         ))}
-        <Route path={notFoundRoute.path} element={<notFoundRoute.component />} />
+        <Route
+          path={notFoundRoute.path}
+          element={<notFoundRoute.component />}
+        />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

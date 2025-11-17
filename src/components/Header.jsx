@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { URL } from '../core/constants/URL'
-import './Header.css'
+import { Link } from "react-router-dom";
+import { URL } from "../shared/constants/URL";
+import "./Header.css";
 
 function Header() {
   return (
@@ -28,7 +28,7 @@ function Header() {
         </nav>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
