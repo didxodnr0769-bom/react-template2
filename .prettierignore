@@ -1,0 +1,12 @@
+# 이미지 및 폰트 파일 무시
+*.svg
+*.png
+*.jpg
+*.ico
+*.gif
+*.woff
+*.woff2
+
+# 빌드 결과물
+dist
+build
