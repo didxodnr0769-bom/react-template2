@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { routes, notFoundRoute } from "./shared/route/routes";
-import Header from "./components/Header";
-import "./App.css";
+import { routes, notFoundRoute } from "@/shared/route/routes";
+import Header from "@/components/Header";
+import "@/App.css";
 
 function App() {
   return (

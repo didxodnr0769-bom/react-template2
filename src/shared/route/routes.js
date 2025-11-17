@@ -1,7 +1,7 @@
-import Home from "../../pages/Home";
-import About from "../../pages/About";
-import NotFound from "../../pages/NotFound";
-import { URL } from "../constants/URL";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
+import NotFound from "@/pages/NotFound";
+import { URL } from "@/shared/constants/URL";
 
 /**
  * 라우트 설정 객체

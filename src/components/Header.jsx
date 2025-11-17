@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { URL } from "../shared/constants/URL";
+import { URL } from "@/shared/constants/URL";
 import "./Header.css";
 
 function Header() {
