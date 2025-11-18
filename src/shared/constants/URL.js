@@ -16,6 +16,15 @@ export const URL = {
   // Login page
   LOGIN: "/login",
 
+  // User pages
+  PROFILE: "/profile",
+  DASHBOARD: "/dashboard",
+
+  // Admin pages
+  ADMIN: "/admin",
+  ADMIN_USERS: "/admin/users",
+  ADMIN_SETTINGS: "/admin/settings",
+
   // 404 Not Found page (wildcard)
   NOT_FOUND: "*",
 };
