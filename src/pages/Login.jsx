@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL, API_URL } from "@/shared/constants/URL";
 import { login } from "@/shared/utils/auth";
+import { httpClient } from "@/shared/system/http/axios";
 import "./Login.css";
 
 function Login() {
@@ -29,17 +30,10 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch(API_URL.LOGIN, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await httpClient.post(API_URL.LOGIN, formData);
+      const result = response.data;
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
+      if (result.success) {
         // Save token and user info to localStorage
         login(result.data.token, result.data.user);
 
@@ -50,7 +44,10 @@ function Login() {
       }
     } catch (err) {
       console.error("Login error:", err);
-      setError("Network error. Please check your connection and try again.");
+      setError(
+        err.response?.data?.message ||
+          "Network error. Please check your connection and try again.",
+      );
     } finally {
       setLoading(false);
     }
