@@ -4,8 +4,10 @@ import Header from "@/components/Header";
 import "@/App.css";
 
 function App() {
+  const basename = import.meta.env.VITE_BASE_PATH || "/";
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Header />
       <Routes>
         {routes.map((route) => (
