@@ -9,7 +9,7 @@ export const authService = {
         password,
       });
 
-      const { accessToken, refreshToken, user } = response.data;
+      const { accessToken, refreshToken, user } = response.data.data;
 
       // 토큰 저장
       tokenStorage.setAccessToken(accessToken);
@@ -42,8 +42,8 @@ export const authService = {
   fetchUserProfile: async () => {
     try {
       // 이 요청은 httpClient를 사용하므로 자동으로 401 처리가 됨
-      const response = await httpClient.get("/users/me");
-      return response.data;
+      const response = await httpClient.get("/api/auth/me");
+      return response.data.data;
     } catch (error) {
       console.error("Failed to fetch user profile:", error);
       // 토큰이 유효하지 않으면 null 반환

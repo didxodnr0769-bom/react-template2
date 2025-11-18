@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "1234",
+    "name": "관리자",
+    "email": "admin@example.com",
+    "role": "admin",
+    "token": "mock-jwt-token-1234567890abcdef"
+  },
+  {
+    "id": 2,
+    "username": "user",
+    "password": "1234",
+    "name": "사용자",
+    "email": "user@example.com",
+    "role": "user",
+    "token": "mock-jwt-token-0987654321fedcba"
+  }
+]

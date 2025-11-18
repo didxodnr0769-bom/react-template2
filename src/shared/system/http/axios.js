@@ -24,7 +24,7 @@ const axiosInstance = axios.create({
  */
 axiosInstance.interceptors.request.use(
   requestInterceptor.onFulfilled,
-  requestInterceptor.onRejected
+  requestInterceptor.onRejected,
 );
 
 /**
@@ -32,7 +32,7 @@ axiosInstance.interceptors.request.use(
  */
 axiosInstance.interceptors.response.use(
   responseInterceptor.onFulfilled,
-  responseInterceptor.onRejected
+  responseInterceptor.onRejected,
 );
 
 /**

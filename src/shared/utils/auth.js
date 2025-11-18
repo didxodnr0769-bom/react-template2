@@ -3,8 +3,8 @@
  * localStorage를 이용한 인증 정보 관리
  */
 
-const AUTH_TOKEN_KEY = 'auth_token';
-const AUTH_USER_KEY = 'auth_user';
+const AUTH_TOKEN_KEY = "auth_token";
+const AUTH_USER_KEY = "auth_user";
 
 /**
  * 토큰 저장
@@ -48,7 +48,7 @@ export const getUser = () => {
   try {
     return JSON.parse(userStr);
   } catch (error) {
-    console.error('Failed to parse user data:', error);
+    console.error("Failed to parse user data:", error);
     return null;
   }
 };
