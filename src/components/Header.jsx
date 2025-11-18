@@ -1,15 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { URL } from "@/shared/constants/URL";
-import { isAuthenticated, logout, getUser } from "@/shared/utils/auth";
 import "./Header.css";
+import { useAuth } from "@/features/user/presentation/hooks/useAuth";
 
 function Header() {
   const navigate = useNavigate();
-  const isLoggedIn = isAuthenticated();
-  const user = getUser();
+  const { user, isAuthenticated, logout } = useAuth();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate(URL.LOGIN);
   };
 
@@ -42,11 +41,9 @@ function Header() {
         </nav>
 
         <div className="auth-section">
-          {isLoggedIn ? (
+          {isAuthenticated ? (
             <div className="user-info">
-              <span className="user-name">
-                {user?.name || user?.username}
-              </span>
+              <span className="user-name">{user?.name || user?.username}</span>
               <button onClick={handleLogout} className="logout-button">
                 Logout
               </button>

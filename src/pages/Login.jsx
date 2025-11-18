@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL, API_URL } from "@/shared/constants/URL";
-import { login } from "@/shared/utils/auth";
-import { httpClient } from "@/shared/system/http/axios";
+import { URL } from "@/shared/constants/URL";
 import "./Login.css";
+import { useAuth } from "@/features/user/presentation/hooks/useAuth";
 
 function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -30,23 +30,15 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await httpClient.post(API_URL.LOGIN, formData);
-      const result = response.data;
-
-      if (result.success) {
-        // Save token and user info to localStorage
-        login(result.data.token, result.data.user);
-
-        // Redirect to home page
-        navigate(URL.HOME);
-      } else {
-        setError(result.message || "Login failed. Please try again.");
-      }
+      await login(formData.username, formData.password);
+      // Redirect to home page after successful login
+      navigate(URL.HOME);
     } catch (err) {
       console.error("Login error:", err);
       setError(
         err.response?.data?.message ||
-          "Network error. Please check your connection and try again.",
+          err.message ||
+          "Login failed. Please check your credentials and try again.",
       );
     } finally {
       setLoading(false);
