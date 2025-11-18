@@ -13,15 +13,21 @@ export const URL = {
   // About page
   ABOUT: "/about",
 
+  // Login page
+  LOGIN: "/login",
+
   // 404 Not Found page (wildcard)
   NOT_FOUND: "*",
 };
 
 /**
- * API endpoint paths (for future use)
+ * API endpoint paths
  */
 export const API_URL = {
-  // Example: USER: "/api/user",
+  // Auth endpoints
+  LOGIN: "/api/auth/login",
+  LOGOUT: "/api/auth/logout",
+  ME: "/api/auth/me",
 };
 
 export default URL;

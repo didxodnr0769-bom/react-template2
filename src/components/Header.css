@@ -58,6 +58,61 @@
   transform: scale(0.95);
 }
 
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  color: #61dafb;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.login-button,
+.logout-button {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.logout-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.login-button:active,
+.logout-button:active {
+  transform: translateY(0);
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   .header {

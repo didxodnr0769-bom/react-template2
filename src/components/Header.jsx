@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { URL } from "@/shared/constants/URL";
+import { isAuthenticated, logout, getUser } from "@/shared/utils/auth";
 import "./Header.css";
 
 function Header() {
+  const navigate = useNavigate();
+  const isLoggedIn = isAuthenticated();
+  const user = getUser();
+
+  const handleLogout = () => {
+    logout();
+    navigate(URL.LOGIN);
+  };
+
+  const handleLogin = () => {
+    navigate(URL.LOGIN);
+  };
+
   return (
     <header className="header">
       <div className="header-container">
@@ -26,6 +40,23 @@ function Header() {
             </li>
           </ul>
         </nav>
+
+        <div className="auth-section">
+          {isLoggedIn ? (
+            <div className="user-info">
+              <span className="user-name">
+                {user?.name || user?.username}
+              </span>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+            </div>
+          ) : (
+            <button onClick={handleLogin} className="login-button">
+              Login
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

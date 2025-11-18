@@ -1,5 +1,6 @@
 import Home from "@/pages/Home";
 import About from "@/pages/About";
+import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 import { URL } from "@/shared/constants/URL";
 
@@ -37,6 +38,16 @@ export const routes = [
     meta: {
       title: "About",
       description: "About Page",
+    },
+  },
+  {
+    path: URL.LOGIN,
+    component: Login,
+    name: "Login",
+    exact: true,
+    meta: {
+      title: "Login",
+      description: "Login Page",
     },
   },
 ];
